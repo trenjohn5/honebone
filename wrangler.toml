@@ -25,5 +25,19 @@ COUNTER = { durable_object = "COUNTER" }
 # Optional: Configure miniflare for local development (remove if not needed)
 [miniflare]
 durable_objects_persist = true  # Ensure state is persisted across local runs
-
 workers_dev = true  # Enable deploying to the workers.dev subdomain
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./dist"
+
+[[durable_objects.bindings]]
+name = "COUNTER"
+class_name = "Counter"
+
+[env.production]
+durable_objects.bindings = [
+  { name = "COUNTER", class_name = "Counter" }
+]
