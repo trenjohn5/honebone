@@ -1,0 +1,29 @@
+# Project Name
+name = "honebone"
+
+# Entry point for the Hono app
+main = "src/index.js"
+
+# Specify the compatibility date for the Cloudflare Workers runtime
+compatibility_date = "2024-10-14"
+
+# Your Cloudflare account ID (replace with your actual account ID)
+account_id = "cf37d9a297e9299b86f41a6e9344d6ba"
+
+# Worker type (JavaScript by default)
+type = "javascript"
+
+# Define Durable Objects
+[[durable_objects]]
+binding = "COUNTER"          # The binding name used in your code
+class_name = "Counter"       # The class name of the Durable Object
+script_name = "hono-cloudflare-hello"  # Optional: same name as your project
+
+# Environment variables or bindings if needed (can be adjusted)
+[vars]
+COUNTER = { durable_object = "COUNTER" }
+
+# Optional: Configure miniflare for local development (remove if not needed)
+[miniflare]
+durable_objects_persist = true  # Ensure state is persisted across local runs
+
