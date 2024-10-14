@@ -17,7 +17,6 @@ type = "javascript"
 [[durable_objects]]
 binding = "COUNTER"          # The binding name used in your code
 class_name = "Counter"       # The class name of the Durable Object
-script_name = "hono-cloudflare-hello"  # Optional: same name as your project
 
 # Environment variables or bindings if needed (can be adjusted)
 [vars]
@@ -27,3 +26,4 @@ COUNTER = { durable_object = "COUNTER" }
 [miniflare]
 durable_objects_persist = true  # Ensure state is persisted across local runs
 
+workers_dev = true  # Enable deploying to the workers.dev subdomain
